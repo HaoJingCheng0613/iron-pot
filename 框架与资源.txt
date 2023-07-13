@@ -1,0 +1,35 @@
+前端静态页面（旺）
+
+后端&前后端通信（N）
+
+文档第二章、环境配置教程（杨）
+
+6.1 线性回归算法（璟）
+6.2 逻辑回归算法（罗）
+6.3 决策树算法（旺）
+6.4 朴素贝叶斯算法（罗）
+6.5 K最近邻算法（杨）
+6.6 支持向量机算法（手写、旺）
+6.7 随机森林算法（手写、璟）
+6.8 K均值聚类算法（杨）
+6.9 降维算法（杨）
+6.10 梯度增强算法（罗）
+
+
+
+
+1.导入数据 load_data
+2.分割数据集 split_data(ceshi= , xunlian= , ) 
+3.开始训练train_data
+4.每个算法自己的数学逻辑 svm......
+
+他的项目在咱们的环境下运行起来。
+
+
+
+nodejs环境配置教程：
+ https://blog.csdn.net/m0_67392273/article/details/126113756?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168925202916800215092243%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168925202916800215092243&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-126113756-null-null.142^v88^control_2,239^v2^insert_chatgpt&utm_term=vscode%E5%AE%89%E8%A3%85node.js&spm=1018.2226.3001.4187
+
+javascript入门教程：vscode，liveserver（vscode插件）
+
+https://www.bilibili.com/video/BV15L4y1a7or?p=3&vd_source=71676ed94e710c461322c102e09801ef
