@@ -7,7 +7,11 @@ class LinearRegression(Model):
         # 在这里实现线性回归的数据加载逻辑
         pass
 
-    def split_data(self, data, test_size):
+    def split_data_K_Fold(self, data, test_size):
+        # 在这里实现线性回归的数据分割逻辑
+        pass
+
+    def split_data_Random(self, data, test_size):
         # 在这里实现线性回归的数据分割逻辑
         pass
 
