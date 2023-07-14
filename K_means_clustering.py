@@ -2,24 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.metrics import silhouette_score
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
-
-class Model:
-    def __init__(self):
-        pass
-
-    def load_data(self, filepath):
-        raise NotImplementedError
-
-    def split_data(self, data, test_size):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
-
-    def train_data(self, X_train, y_train):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
+from model import Model
 
 
 class KMeansClustering(Model):
@@ -105,9 +89,3 @@ class KMeansClustering(Model):
         # 可视化聚类结果
         kmeans.plot_clusters(X_scaled[:, :2], labels, centroids)
 
-
-if __name__ == '__main__':
-    # 1. 创建一个算法模型对象
-    KMeansClustering_shili = KMeansClustering(n_clusters=3)
-    # 2. 调用模型对象的方法
-    KMeansClustering_shili.test()
