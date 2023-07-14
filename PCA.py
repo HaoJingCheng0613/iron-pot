@@ -1,29 +1,14 @@
 import numpy as np
-import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
-
-class Model:
-    def __init__(self):
-        pass
-
-    def load_data(self, filepath):
-        raise NotImplementedError
-
-    def split_data(self,dataname ,test_size):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
-
-    def train_data(self, X_train, y_train):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
-
+from model import Model
 
 class PCAA(Model):
+   class PCAA(Model):
     def __init__(self):
         super().__init__()
 
@@ -41,7 +26,7 @@ class PCAA(Model):
         X_scaled = scaler.fit_transform(X)
         return X_scaled
 
-    def split_data(self,dataname,test_size):
+    def split_data_Random(self,dataname,test_size):
         X,y = self.load_data(dataname)
         X_scaled = self.standardize_data(X)
         X_train, X_test = train_test_split(X_scaled, test_size=test_size, random_state=2023)
@@ -73,7 +58,7 @@ class PCAA(Model):
         return accuracy
 
     def hold_out_validation(self, dataname, test_size, n_components):
-        X_train, X_test, y_train,y_test = self.split_data(dataname, test_size)
+        X_train, X_test, y_train,y_test = self.split_data_Random(dataname, test_size)
         X_test_pca = self.pca(X_test, n_components)
         holdoutmodel = self.train_data(X_train, y_train, n_components)
         y_pred = holdoutmodel.predict(X_test_pca)
@@ -93,11 +78,3 @@ class PCAA(Model):
             if dataname=="iris":
                 k_fold_accuracy = self.k_fold_cross_validation(dataname, test_size,n_components) #此处testsize相当于n_splits
                 print("K折交叉验证法准确率：", k_fold_accuracy)
-
-
-
-if __name__ == '__main__':
-    # 1. 创建一个算法模型对象
-    PCAA_shili = PCAA()
-    # 2. 调用模型对象的方法
-    PCAA_shili.test(test_size=4, dataname="iris", method="kfold", n_components=2)
