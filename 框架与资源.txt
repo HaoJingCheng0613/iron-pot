@@ -32,3 +32,9 @@ nodejs环境配置教程：
 
 javascript入门教程：vscode，liveserver（vscode插件）：
 https://www.bilibili.com/video/BV15L4y1a7or?p=3&vd_source=71676ed94e710c461322c102e09801ef
+
+nodejs入门教程：
+https://www.bilibili.com/video/BV1KX4y1K7uz?p=3&vd_source=71676ed94e710c461322c102e09801ef
+
+postman安装教程：
+https://blog.csdn.net/m0_61843874/article/details/123324727?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168931424716800222886461%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168931424716800222886461&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-123324727-null-null.142^v88^control_2,239^v2^insert_chatgpt&utm_term=postman%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187&ydreferer=aHR0cHM6Ly9zby5jc2RuLm5ldC9zby9zZWFyY2g%2FcT1wb3N0bWFuJUU1JUFFJTg5JUU4JUEzJTg1JUU2JTk1JTk5JUU3JUE4JThCJnQ9JnU9JnVydz0%3D
