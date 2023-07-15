@@ -19,7 +19,11 @@ class PCAA(Model):
             iris = load_iris()
             X = iris.data
             y = iris.target
-            return X, y
+        if name == "wine":
+            wine = load_wine()
+            X = wine.data
+            y = wine.target
+        return X, y
 
     # 数据标准化
     def standardize_data(self, X):
