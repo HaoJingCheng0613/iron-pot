@@ -29,8 +29,8 @@ if __name__ == '__main__':
     K_nearest_neighbors_shili = K_nearest_neighbors()
     # 2. 调用模型对象的方法
     # 在留出法中testsize指测试集的比例，K折交叉验证法中代指几折，如3折，4折等
-    K_nearest_neighbors_shili.test(test_size=0.25, dataname="iris", method="holdout")
-    K_nearest_neighbors_shili.test(test_size=0.20, dataname="wine", method="holdout")
+    K_nearest_neighbors_shili.test(test_size=0.25, dataname="iris", method="random")
+    K_nearest_neighbors_shili.test(test_size=0.20, dataname="wine", method="random")
     K_nearest_neighbors_shili.test(test_size=5, dataname="iris", method="kfold")
     K_nearest_neighbors_shili.test(test_size=4, dataname="wine", method="kfold")
 
