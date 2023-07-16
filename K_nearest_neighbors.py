@@ -87,7 +87,7 @@ class K_nearest_neighbors(Model):
         return accuracy, precision, recall, f1
 
     def test(self, test_size, dataname, method):
-        if method == "holdout":
+        if method == "random":
             hold_out_accuracy, hold_out_precision, hold_out_recall, hold_out_f1 = self.hold_out_validation(dataname,
                                                                                                                test_size)
             print("留出法准确率：", hold_out_accuracy)
