@@ -47,7 +47,9 @@ class GradientBoosting(Model):
             gbrt = self.train_data(x_train_fold,y_train_fold)
 
             #评估
-            self.Evaluations(gbrt, x_test_fold, y_test_fold, ObservationIndex)
+            tmp = self.Evaluations(gbrt, x_test_fold, y_test_fold, ObservationIndex)
+            printer = "K折交叉验证法准确率：" + tmp
+            return printer
     
     #random
     def split_data_Random(self, data, size, ObservationIndex):
@@ -60,7 +62,9 @@ class GradientBoosting(Model):
         gbrt=self.train_data(x_train, y_train)
         
         #评估
-        self.Evaluations(gbrt, x_test, y_test, ObservationIndex)
+        tmp = self.Evaluations(gbrt, x_test, y_test, ObservationIndex)
+        printer = "random" + tmp
+        return printer
     
     #训练模型
     def train_data(self, X_train, y_train):
@@ -75,24 +79,32 @@ class GradientBoosting(Model):
         predictions = [round(value) for value in y_pred]
         if ObservationIndex == "acc":
             AccuracyScore = accuracy_score(y_test,predictions)
-            print('accuracy_score : ', AccuracyScore)
+            printer = "准确率：" +  str(AccuracyScore)
+            
         elif ObservationIndex == "f1":
             F1Score = f1_score(y_test,predictions, average='micro')
-            print('f1_score for micro : ', F1Score)
+            printer = "F1分数：" +  str(F1Score)
+
+        return printer
 
     #测试模型
     def test(self, dataname, method, size, ObservationIndex):
-        print("GradientBoosting test:")
         
         if method == "kfold":
-            self.split_data_K_Fold(dataname, ObservationIndex)
+            if ObservationIndex == "acc":
+                return self.split_data_K_Fold(dataname, ObservationIndex)
+            elif ObservationIndex == "f1":
+                return self.split_data_K_Fold(dataname, ObservationIndex)
         
         elif method == "random":
-            self.split_data_Random(dataname, size, ObservationIndex)
+            if ObservationIndex == "acc":
+                return self.split_data_Random(dataname, size, ObservationIndex)
+            elif ObservationIndex == "f1":
+                return self.split_data_Random(dataname, size, ObservationIndex)
 
 if __name__ == '__main__':
     # 1. 创建一个算法模型对象
     a = GradientBoosting()
     # 2. 调用模型对象的方法
-    a.test("iris", "kfold", 0.5, "acc")
-    a.test("iris", "random", 0.9, "acc")
+    print(a.test("iris", "kfold", 0.5, "f1"))
+    print(a.test("wine", "random", 0.7, "f1"))
