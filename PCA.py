@@ -89,7 +89,7 @@ class PCAA(Model):
         plt.show()
 
     def test(self, test_size, dataname, method, n_components):
-        if method == "holdout":
+        if method == "random":
             hold_out_accuracy, hold_out_precision, hold_out_recall, hold_out_f1, hold_out_confusion_matrix_result = self.hold_out_validation(
                 dataname, test_size, n_components)
             print("留出法准确率：", hold_out_accuracy)
