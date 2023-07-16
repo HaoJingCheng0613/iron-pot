@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score,f1_score
 
 
 #逻辑回归算法
-class LogisticRegression(Model):
+class Logistic(Model):
     
     #加载数据集
     def load_data(self, dataname):
@@ -97,7 +97,7 @@ class LogisticRegression(Model):
 
 if __name__ == '__main__':
     # 1. 创建一个算法模型对象
-    a = LogisticRegression()
+    a = Logistic()
     # 2. 调用模型对象的方法
     a.test("iris", "kfold", 0.5, "f1")
     a.test("wine", "random", 0.7, "f1")
