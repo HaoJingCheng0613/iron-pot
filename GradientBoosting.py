@@ -68,7 +68,7 @@ class GradientBoosting(Model):
     
     #训练模型
     def train_data(self, X_train, y_train):
-        gbrt = GradientBoostingRegressor(max_depth=2, n_estimators=3, random_state=42)
+        gbrt = GradientBoostingRegressor(learning_rate = 0.3, max_depth=2, n_estimators=3, random_state=42)
         gbrtf = gbrt.fit(X_train,y_train)
         return gbrtf
 
