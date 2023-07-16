@@ -27,8 +27,24 @@ if __name__ == '__main__':
     # 2. 调用模型对象的方法
     K_nearest_neighbors_shili.test(4, "iris", "kfold")
 
+    # SVM算法
+    # 1. 创建一个算法模型对象
+    SVM_shili = SVM()
+    # 2. 调用模型对象的方法
+    data, target = SVM_shili.load_data("wine") # 此处可以更改数据集名称
+    data_train, data_test, target_train, target_test = SVM_shili.split_data_Random(data, target, 0.4) # 此处可以更改划分测试集大小
+    b,alphas=SVM_shili.train_data(data_train, data_test, target_train, target_test)
+    SVM_shili.test(data_train, data_test, target_train, target_test,b,alphas)
 
-
+    
+    #DecisionTree算法
+    # 1. 创建一个算法模型对象
+     DecisionTree_shili = DecisionTree()
+    # 2. 调用模型对象的方法
+    data, target = DecisionTree_shili.load_data("wine")# 此处可以更改数据集名称
+    data_train, data_test, target_train, target_test = DecisionTree_shili.split_data_Random(data, target, 0.3)# 此处可以更改划分测试集大小
+    DecisionTree_shili.train_data(data_train, target_train)
+    DecisionTree_shili.test(data_train, data_test, target_train, target_test)
 
 
 
