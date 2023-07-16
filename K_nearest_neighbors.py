@@ -7,6 +7,8 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from model import Model
+import warnings
+warnings.filterwarnings("ignore")
 
 class K_nearest_neighbors(Model):
     def __init__(self):
