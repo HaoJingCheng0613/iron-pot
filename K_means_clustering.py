@@ -5,10 +5,11 @@ from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 from model import Model
 
+
 class KMeansClustering(Model):
-    def __init__(self, n_clusters):
+    def __init__(self):
         super().__init__()
-        self.n_clusters = n_clusters
+        self.n_clusters = None
         self.labels = None
         self.centroids = None
 
@@ -144,20 +145,22 @@ class KMeansClustering(Model):
         plt.title('K-means Clustering')
         plt.show()
 
-    def test(self, dataname):
+    def test(self, dataname, n_clusters):
         # 使用K均值聚类算法
-        kmeans = KMeansClustering(self.n_clusters)
+        # kmeans = KMeansClustering(self.n_clusters)
+        self.n_clusters = n_clusters
         # 加载数据
-        X, y, featurenames = kmeans.load_data(dataname)
+        X, y, featurenames = self.load_data(dataname)
 
-        X_scaled = kmeans.standardize_data(X)
-        kmeans.train_data(X_scaled, y)
-        labels = kmeans.labels
-        centroids = kmeans.centroids
-        kmeans.silhouetteCoefficient(X_scaled, labels)
-        kmeans.compute_wcss(X_scaled, labels, centroids)
-        kmeans.dbi(X_scaled, labels, centroids)
-        kmeans.ch_scores(X_scaled, labels, centroids)
+        X_scaled = self.standardize_data(X)
+        self.train_data(X_scaled, y)
+        labels = self.labels
+        centroids = self.centroids
+        self.silhouetteCoefficient(X_scaled, labels)
+        self.compute_wcss(X_scaled, labels, centroids)
+        self.dbi(X_scaled, labels, centroids)
+        self.ch_scores(X_scaled, labels, centroids)
 
         # 可视化聚类结果
-        kmeans.plot_clusters(X_scaled[:, :2], labels, centroids,featurenames[0],featurenames[1] )
+        self.plot_clusters(X_scaled[:, :2], labels, centroids, featurenames[0], featurenames[1])
+        
