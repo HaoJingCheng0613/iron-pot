@@ -68,7 +68,7 @@ if __name__ == '__main__':
     NaiveBayes_shill = NaiveBayes()
     # 2. 调用模型对象的方法
     #其中method为k折时参数size无意义，函数内部已定为6折
-    print(NaiveBayes_shill.test("iris", "random", 0.9, "acc"))
+    print(NaiveBayes_shill.test("iris", "random", 0.8, "acc"))
     print(NaiveBayes_shill.test("wine", "kfold", 0.7, "f1"))
 
 
