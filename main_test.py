@@ -54,4 +54,31 @@ if __name__ == '__main__':
     DecisionTree_shili.test(data_train, data_test, target_train, target_test)
 
 
+    #逻辑回归算法
+    # 1. 创建一个算法模型对象
+    LogisticRegression_shill = Logistic()
+    # 2. 调用模型对象的方法
+    #其中method为k折时参数size无意义，函数内部已定为6折
+    print(LogisticRegression_shill.test("iris", "kfold", 0.5, "acc"))
+    print(LogisticRegression_shill.test("wine", "random", 0.7, "f1"))
+
+
+    #朴素贝叶斯算法
+    # 1. 创建一个算法模型对象
+    NaiveBayes_shill = NaiveBayes()
+    # 2. 调用模型对象的方法
+    #其中method为k折时参数size无意义，函数内部已定为6折
+    print(NaiveBayes_shill.test("iris", "random", 0.9, "acc"))
+    print(NaiveBayes_shill.test("wine", "kfold", 0.7, "f1"))
+
+
+    #梯度增强算法
+    # 1. 创建一个算法模型对象
+    GradientBoosting_shill = GradientBoosting()
+    # 2. 调用模型对象的方法
+    #其中method为k折时参数size无意义，函数内部已定为6折
+    print(GradientBoosting_shill.test("iris", "random", 0.6, "acc"))
+    print(GradientBoosting_shill.test("wine", "kfold", 0.7, "f1"))
+
+
 
