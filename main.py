@@ -3,6 +3,9 @@ from K_means_clustering import KMeansClustering
 from K_nearest_neighbors import K_nearest_neighbors
 from RandomDessert import Random_Dessert
 from LinearRegression import Linear_Regression
+from LogisticRegression import Logistic
+from NaiveBayes import NaiveBayes
+from GradientBoosting import GradientBoosting
 
 if __name__ == '__main__':
     # PCA降维算法
@@ -76,6 +79,85 @@ if __name__ == '__main__':
     LinearRegression_test.train_data(dataset_name='iris',size=0.8)
 
 
+    #逻辑回归算法
+    # 1. 创建一个算法模型对象
+    LogisticRegression_shill = Logistic()
+    # 2. 调用模型对象的方法
+    # 2.1 iris数据集
+    # 2.1.1 k折(参数size无意义，函数内部已定为6折)
+    print(LogisticRegression_shill.test("iris", "kfold", 0.5, "acc"))
+    print(LogisticRegression_shill.test("iris", "kfold", 0.5, "f1"))
+    # 2.1.2 random
+    print(LogisticRegression_shill.test("iris", "random", 0.6, "acc"))
+    print(LogisticRegression_shill.test("iris", "random", 0.7, "acc"))
+    print(LogisticRegression_shill.test("iris", "random", 0.8, "acc"))
+    print(LogisticRegression_shill.test("iris", "random", 0.6, "f1"))
+    print(LogisticRegression_shill.test("iris", "random", 0.7, "f1"))
+    print(LogisticRegression_shill.test("iris", "random", 0.8, "f1"))
+    #2.2 wine数据集
+    # 2.2.1 k折(参数size无意义，函数内部已定为6折)
+    print(LogisticRegression_shill.test("wine", "kfold", 0.5, "acc"))
+    print(LogisticRegression_shill.test("wine", "kfold", 0.5, "f1"))
+    # 2.2.2 random
+    print(LogisticRegression_shill.test("wine", "random", 0.6, "acc"))
+    print(LogisticRegression_shill.test("wine", "random", 0.7, "acc"))
+    print(LogisticRegression_shill.test("wine", "random", 0.8, "acc"))
+    print(LogisticRegression_shill.test("wine", "random", 0.6, "f1"))
+    print(LogisticRegression_shill.test("wine", "random", 0.7, "f1"))
+    print(LogisticRegression_shill.test("wine", "random", 0.8, "f1"))
 
 
+    #朴素贝叶斯算法
+    # 1. 创建一个算法模型对象
+    NaiveBayes_shill = Logistic()
+    # 2. 调用模型对象的方法
+    # 2.1 iris数据集
+    # 2.1.1 k折(参数size无意义，函数内部已定为6折)
+    print(NaiveBayes_shill.test("iris", "kfold", 0.5, "acc"))
+    print(NaiveBayes_shill.test("iris", "kfold", 0.5, "f1"))
+    # 2.1.2 random
+    print(NaiveBayes_shill.test("iris", "random", 0.6, "acc"))
+    print(NaiveBayes_shill.test("iris", "random", 0.7, "acc"))
+    print(NaiveBayes_shill.test("iris", "random", 0.8, "acc"))
+    print(NaiveBayes_shill.test("iris", "random", 0.6, "f1"))
+    print(NaiveBayes_shill.test("iris", "random", 0.7, "f1"))
+    print(NaiveBayes_shill.test("iris", "random", 0.8, "f1"))
+    #2.2 wine数据集
+    # 2.2.1 k折(参数size无意义，函数内部已定为6折)
+    print(NaiveBayes_shill.test("wine", "kfold", 0.5, "acc"))
+    print(NaiveBayes_shill.test("wine", "kfold", 0.5, "f1"))
+    # 2.2.2 random
+    print(NaiveBayes_shill.test("wine", "random", 0.6, "acc"))
+    print(NaiveBayes_shill.test("wine", "random", 0.7, "acc"))
+    print(NaiveBayes_shill.test("wine", "random", 0.8, "acc"))
+    print(NaiveBayes_shill.test("wine", "random", 0.6, "f1"))
+    print(NaiveBayes_shill.test("wine", "random", 0.7, "f1"))
+    print(NaiveBayes_shill.test("wine", "random", 0.8, "f1"))
 
+
+    #梯度增强算法
+    # 1. 创建一个算法模型对象
+    GradientBoosting_shill = Logistic()
+    # 2. 调用模型对象的方法
+    # 2.1 iris数据集
+    # 2.1.1 k折(参数size无意义，函数内部已定为6折)
+    print(GradientBoosting_shill.test("iris", "kfold", 0.5, "acc"))
+    print(GradientBoosting_shill.test("iris", "kfold", 0.5, "f1"))
+    # 2.1.2 random
+    print(GradientBoosting_shill.test("iris", "random", 0.6, "acc"))
+    print(GradientBoosting_shill.test("iris", "random", 0.7, "acc"))
+    print(GradientBoosting_shill.test("iris", "random", 0.8, "acc"))
+    print(GradientBoosting_shill.test("iris", "random", 0.6, "f1"))
+    print(GradientBoosting_shill.test("iris", "random", 0.7, "f1"))
+    print(GradientBoosting_shill.test("iris", "random", 0.8, "f1"))
+    #2.2 wine数据集
+    # 2.2.1 k折(参数size无意义，函数内部已定为6折)
+    print(GradientBoosting_shill.test("wine", "kfold", 0.5, "acc"))
+    print(GradientBoosting_shill.test("wine", "kfold", 0.5, "f1"))
+    # 2.2.2 random
+    print(GradientBoosting_shill.test("wine", "random", 0.6, "acc"))
+    print(GradientBoosting_shill.test("wine", "random", 0.7, "acc"))
+    print(GradientBoosting_shill.test("wine", "random", 0.8, "acc"))
+    print(GradientBoosting_shill.test("wine", "random", 0.6, "f1"))
+    print(GradientBoosting_shill.test("wine", "random", 0.7, "f1"))
+    print(GradientBoosting_shill.test("wine", "random", 0.8, "f1"))
