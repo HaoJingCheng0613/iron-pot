@@ -2,13 +2,12 @@ import numpy as np
 import pandas as pd
 from model import Model
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import cross_val_predict, train_test_split
-from sklearn import datasets
+from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 from sklearn.datasets import load_wine
  
 
-class LinearRegression(Model):
+class Linear_Regression(Model):
     def __init__(self):
         pass
 
@@ -24,8 +23,8 @@ class LinearRegression(Model):
         
       #random        
     def split_data_random(self,name,size):
-        df = pd.DataFrame(LinearRegression.load_data(self,name).data, columns=LinearRegression.load_data(self,name).feature_names)
-        target = pd.DataFrame(LinearRegression.load_data(self,name).target, columns=['MEDV'])
+        df = pd.DataFrame(Linear_Regression.load_data(self,name).data, columns=Linear_Regression.load_data(self,name).feature_names)
+        target = pd.DataFrame(Linear_Regression.load_data(self,name).target, columns=['MEDV'])
         X = df
         y = target
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1-size/10, random_state=1)
@@ -34,7 +33,7 @@ class LinearRegression(Model):
 
     def train_data(self,dataset_name,size):
         lr = LinearRegression()
-        X_train,X_test, y_train, y_test=LinearRegression.split_data_random(self,dataset_name,size)
+        X_train,X_test, y_train, y_test=Linear_Regression.split_data_random(self,dataset_name,size)
         lr.fit(X_train, y_train)
         y_pred = lr.predict(X_test)
         from sklearn import metrics
@@ -56,4 +55,3 @@ class LinearRegression(Model):
         plt.legend()
         plt.show()
  
-
