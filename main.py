@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
     #朴素贝叶斯算法
     # 1. 创建一个算法模型对象
-    NaiveBayes_shill = Logistic()
+    NaiveBayes_shill = NaiveBayes()
     # 2. 调用模型对象的方法
     # 2.1 iris数据集
     # 2.1.1 k折(参数size无意义，函数内部已定为6折)
@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
     #梯度增强算法
     # 1. 创建一个算法模型对象
-    GradientBoosting_shill = Logistic()
+    GradientBoosting_shill = GradientBoosting()
     # 2. 调用模型对象的方法
     # 2.1 iris数据集
     # 2.1.1 k折(参数size无意义，函数内部已定为6折)
