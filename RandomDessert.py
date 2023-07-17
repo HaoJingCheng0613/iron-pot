@@ -38,7 +38,7 @@ class Random_Dessert(Model):
         # 训练随机森林
         M = []  # 存储决策树模型的数组
         R = []  # 存储各决策树随机选取的特征组合
-        n_trees = 8  # 设置森林中树的颗数
+        n_trees = 200  # 设置森林中树的颗数
 
         # 训练多棵树
         for i in range(n_trees):
@@ -59,7 +59,7 @@ class Random_Dessert(Model):
            # 存储模型
            M.append(model)  # 将决策树模型加入数组
            R.append(r)  # 将特征组合加入数组中
-           print('第' + str(i) + '颗预测score=', model.score(X, Y))  # 打印每个基础模型的效果
+          
 
         # 测试随机森林，将每个模型预测值的结果添加到result(DataFrame)中
         result = pd.concat([pd.DataFrame([M[i].predict(data.iloc[:, R[i]])]) for i in range(n_trees)], ignore_index=True)
