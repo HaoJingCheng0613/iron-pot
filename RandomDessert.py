@@ -68,7 +68,7 @@ class Random_Dessert(Model):
         print('预测值结果=', predict)
         # 计算准确率
         score = sum(np.where(predict == dataset.target, 1, 0)) / len(data)
-        print("random分割数据的准确率为:",score)
+        print("准确率为:",score)
 
 n=Random_Dessert()
 n.train_data('iris',0.8)
