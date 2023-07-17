@@ -1,6 +1,9 @@
 from PCA import PCAA
 from K_means_clustering import KMeansClustering
 from K_nearest_neighbors import K_nearest_neighbors
+from LogisticRegression import Logistic
+from NaiveBayes import NaiveBayes
+from GradientBoosting import GradientBoosting
 
 if __name__ == '__main__':
     # PCA降维算法
