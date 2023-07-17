@@ -1,26 +1,12 @@
 import numpy as np
 import pandas as pd
+from model import Model
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import cross_val_predict, train_test_split
 from sklearn import datasets
 from sklearn.datasets import load_iris
 from sklearn.datasets import load_wine
  
-
-class Model:
-    def __init__(self):
-        pass
-
-    def load_data(self):
-        raise NotImplementedError
-
-    def split_data(self, data, test_size):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
-
-    def train_data(self, X_train, y_train):
-        # 这是一个抽象方法，应该在每个子类中实现
-        raise NotImplementedError
 
 class LinearRegression(Model):
     def __init__(self):
