@@ -1,6 +1,8 @@
 from PCA import PCAA
 from K_means_clustering import KMeansClustering
 from K_nearest_neighbors import K_nearest_neighbors
+from RandomDessert import Random_Dessert
+from LinearRegression import Linear_Regression
 
 if __name__ == '__main__':
     # PCA降维算法
@@ -34,6 +36,44 @@ if __name__ == '__main__':
     K_nearest_neighbors_shili.test(test_size=5, dataname="iris", method="kfold")
     K_nearest_neighbors_shili.test(test_size=4, dataname="wine", method="kfold")
 
+    #随机森林算法
+
+    #1.创建一个算法模型对象
+    RandomDessert_test=Random_Dessert()
+    #3.1.1调用wine数据集 采取random分割方法 60%为训练集
+    RandomDessert_test.train_data(dataset_name='wine',size=0.6)
+    #3.1.2调用wine数据集 采取random分割方法 70%为训练集
+    RandomDessert_test.train_data(dataset_name='wine',size=0.7)
+    #3.1.3调用wine数据集 采取random分割方法 80%为训练集 
+    RandomDessert_test.train_data(dataset_name='wine',size=0.8)  
+
+    #3.2.1调用iris数据集 采取random分割方法 60%为训练集
+    RandomDessert_test.train_data(dataset_name='iris',size=0.6)
+    #3.1.2调用wine数据集 采取random分割方法 70%为训练集
+    RandomDessert_test.train_data(dataset_name='iris',size=0.7)
+    #3.1.3调用wine数据集 采取random分割方法 80%为训练集 
+    RandomDessert_test.train_data(dataset_name='iris',size=0.8) 
+
+
+    #线性回归算法
+
+    #1.创建一个算法模型对象
+    LinearRegression_test=Linear_Regression()
+    #4.1.1调用wine数据集 采取random分割方法 60%为训练集
+    LinearRegression_test.train_data(dataset_name='wine',size=0.6)
+    #4.1.2调用wine数据集 采取random分割方法 70%为训练集
+    LinearRegression_test.train_data(dataset_name='wine',size=0.7)
+    #4.1.1调用wine数据集 采取random分割方法 80%为训练集
+    LinearRegression_test.train_data(dataset_name='wine',size=0.8)
+
+    #1.创建一个算法模型对象
+    LinearRegression_test=Linear_Regression()
+    #4.1.1调用iris数据集 采取random分割方法 60%为训练集
+    LinearRegression_test.train_data(dataset_name='iris',size=0.6)
+    #4.1.2调用iris数据集 采取random分割方法 70%为训练集
+    LinearRegression_test.train_data(dataset_name='iris',size=0.7)
+    #4.1.1调用iris数据集 采取random分割方法 80%为训练集
+    LinearRegression_test.train_data(dataset_name='iris',size=0.8)
 
 
 
