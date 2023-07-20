@@ -10,10 +10,7 @@ from sklearn.model_selection import train_test_split
 
 class Random_Forest(Model):
     def __init__(self, n_model=10):
-        '''
-        初始化函数
-        '''
-        # 分类器的数量，默认为10
+    
         self.n_model = n_model
         # 用于保存模型的列表，训练好分类器后将对象append进去即可
         self.models = []
@@ -42,13 +39,7 @@ class Random_Forest(Model):
         return feature_train, feature_test, target_train, target_test
 
     def train_data(self, feature=None, label=None):
-        '''
-        训练模型，请记得将模型保存至self.models
-        :param feature: 训练集数据，类型为ndarray
-        :param label: 训练集标签，类型为ndarray
-        :return: None
-        '''
-        # ************* Begin ************#
+        
         n = len(feature)
         for i in range(self.n_model):
             # 在训练集N随机选取n个样本  #frac=1 样本大小有放回
@@ -66,14 +57,10 @@ class Random_Forest(Model):
             model = DecisionTreeClassifier()
             model = model.fit(randomFeatures, randomLable)
             self.models.append({tags: model})
-        # ************* End **************#
+  
 
     def predict(self, features, target):
-        '''
-        :param features: 测试集数据，类型为ndarray
-        :return: 预测结果，类型为ndarray
-        '''
-        # ************* Begin ************#
+       
         result = []
         vote = []
 
@@ -98,7 +85,7 @@ class Random_Forest(Model):
             result.append(v[0][0])
         #print(result)
         return result
-        # ************* End **************#
+      
 
   
 
