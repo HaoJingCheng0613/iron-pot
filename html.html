@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据处理页</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="js.js"></script>
+</head>
+<body>
+    <div id="six">
+        <div id="show">  
+            <button class="btn" id="run-button"><span>
+                启动！
+            </span></button>
+            <button class="btn" id="clear-button"><span>
+                清除！
+            </span></button>
+         </div>
+        <div id="optext6">
+            
+        </div>
+    </div>
+    <div id="first"> 
+        <div id="optext1">
+            请选择数据集
+        </div>
+        <a class="database" id="wine" onclick="onwine()">
+            <img src="wine.png" height="80px" width="75px">
+        </a>
+        <a class="database" id="iris" onclick="oniris()">
+            <img src="iris.png" height="80px" width="75px">
+        </a> 
+        <div class="fir-option" id="first-optionleft">
+            <input type="radio" name="optionfirst" id="optionfirstleft" value="A">
+        </div>
+        <div class="fir-option" id="first-optionright">
+            <input type="radio" name="optionfirst" id="optionfirstright" value="B">
+        </div>       
+    </div>
+    <div id="second"> 
+        <div id="optext2">
+            请选择数据分割比例
+        </div>
+        <div id="splitratio">  
+            <input type="radio" name="spratio" id="spratio-1" value="B">
+            <input type="radio" name="spratio" id="spratio-2" value="A">
+        <label for="spratio-1" class="spratio spratio-1">
+        <div class="splitdot"></div>
+        <span>30%</span>
+         </label>
+        <label for="spratio-2" class="spratio spratio-2">
+        <div class="splitdot"></div>
+        <span>20%</span>
+        </label>
+         </div>
+        <!--<a class="proportion" id="onepnine" onclick="onone()">
+            <img src="onepnine.png" height="40px" width="40px">
+        </a>
+        <a class="proportion" id="threepseven" onclick="onthree()">
+            <img src="threepseven.png" height="40px" width="40px">
+        </a>
+        <div class="sen-option" id="sencond-optionleft">
+            <input type="radio" name="optionsencond" id="optionsencondleft">
+        </div>
+        <div class="sen-option" id="sencond-optionright">
+            <input type="radio" name="optionsencond" id="optionsencondright">
+        </div>   -->         
+    </div>
+    <div id="third"> 
+        <div id="optext3">
+            请选择数据分割器
+        </div>
+        <div id="split">  
+            <input type="radio" name="spliselect" id="splitoption-1" value="A">
+            <input type="radio" name="spliselect" id="splitoption-2" value="B">
+        <label for="splitoption-1" class="splitoption splitoption-1">
+        <div class="splitdot"></div>
+        <span>random</span>
+         </label>
+        <label for="splitoption-2" class="splitoption splitoption-2">
+        <div class="splitdot"></div>
+        <span>k-fold</span>
+        </label>
+         </div>
+    </div>
+    <div id="fourth"> 
+        <div id="optext4">
+            请选择模型学习率
+        </div>
+        <div id="modelstudy">  
+            <input type="radio" name="modelstudyselect" id="modelstudyoption-1" value="A">
+            <input type="radio" name="modelstudyselect" id="modelstudyoption-2" value="B">
+        <label for="modelstudyoption-1" class="modelstudyoption modelstudyoption-1">
+        <div class="modelstudydot"></div>
+        <span>low</span>
+         </label>
+        <label for="modelstudyoption-2" class="modelstudyoption modelstudyoption-2">
+        <div class="modelstudydot"></div>
+        <span>high</span>
+        </label>
+         </div>
+    </div>
+    <div id="fifth">
+        <div id="optext5">
+            请选择算法模型
+        </div>
+        <div id="model">
+            <input class="modeloptionleft" type="radio" name="type" id="modeloption1" value="A"/> 
+            <label for="modeloptionleft">Linear Regression</label>
+            <input class="modeloptionright" type="radio" name="type" id="modeloption2" value="B"/> 
+            <label for="modeloptionright">SVM</label>
+            <input class="modeloptionleft" type="radio" name="type" id="modeloption3" value="C"/> 
+            <label for="modeloptionleft">KNN</label>
+            <input class="modeloptionright" type="radio" name="type" id="modeloption4" value="D"/> 
+            <label for="modeloptionright">Logistic Regression</label>
+            <input class="modeloptionleft" type="radio" name="type" id="modeloption5" value="E"/> 
+            <label for="modeloptionleft">Decision Tree</label>
+            <input class="modeloptionright" type="radio" name="type" id="modeloption6" value="F"/> 
+            <label for="modeloptionright">K-Means</label>
+            <input class="modeloptionleft" type="radio" name="type" id="modeloption7" value="G"/> 
+            <label for="modeloptionleft">Random Forest</label>
+            <input class="modeloptionright" type="radio" name="type" id="modeloption8" value="H"/> 
+            <label for="modeloptionright">Naive Bayes</label>
+            <input class="modeloptionleft" type="radio" name="type" id="modeloption9" value="I"/> 
+            <label for="modeloptionleft">Dimensional Reduction</label>
+            <input class="modeloptionright" type="radio" name="type" id="modeloption10" value="J"/> 
+            <label for="modeloptionright">Gradient Boosting</label>
+        </div>
+    </div>   
+    <script>
+        // 创建 WebSocket 对象并连接特定端口
+        let ws = new WebSocket('ws://localhost:2333');
+
+        // 当连接打开时，设置点击事件监听器
+        ws.onopen = function() {
+            document.getElementById('run-button').addEventListener('click', function() {
+    // 获取所有选项值
+                let option1 = document.querySelector('input[name="optionfirst"]:checked').value;
+                let option2 = document.querySelector('input[name="spratio"]:checked').value;
+                let option3 = document.querySelector('input[name="spliselect"]:checked').value;
+                let option4 = document.querySelector('input[name="modelstudyselect"]:checked').value;
+                let option5 = document.querySelector('input[name="type"]:checked').value;
+
+                // 拼接选项值
+                let message = option1 + option2 + option3 + option4 + option5;
+
+                // 将选项值传递给服务器
+                ws.send(message);
+            });
+
+
+
+            document.getElementById('clear-button').addEventListener('click', function() {
+                // 清除所有的p标签
+                ws.send("clear")
+                let optext6 = document.getElementById('optext6');
+                while(optext6.firstChild) {
+                    optext6.firstChild.remove();
+                }
+            });
+        };
+
+        ws.onmessage = function(e){
+            //console.log(e.data);
+            let p = document.createElement('p');
+            // 替换所有的 \n 为 <br>
+            p.innerHTML = e.data.replace(/\n/g, '<br>');
+            // 设置字体颜色为黑色
+            p.style.color = 'black';
+            // 找到id为optext6的元素
+            let optext6 = document.getElementById('optext6');
+            // 把新的p标签添加到optext6中
+            optext6.appendChild(p);
+        };
+
+
+
+
+    </script> 
+</body>
+</html>
