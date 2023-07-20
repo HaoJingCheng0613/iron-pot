@@ -1,9 +1,12 @@
 from PCA import PCAA
 from K_means_clustering import KMeansClustering
 from K_nearest_neighbors import K_nearest_neighbors
+from SVM import SVM
+from DecisionTree import DecisionTree
 from LogisticRegression import Logistic
 from NaiveBayes import NaiveBayes
 from GradientBoosting import GradientBoosting
+
 
 if __name__ == '__main__':
     # PCA降维算法
@@ -49,7 +52,7 @@ if __name__ == '__main__':
     
     #DecisionTree算法
     # 1. 创建一个算法模型对象
-     DecisionTree_shili = DecisionTree()
+    DecisionTree_shili = DecisionTree()
     # 2. 调用模型对象的方法
     data, target = DecisionTree_shili.load_data("wine")# 此处可以更改数据集名称
     data_train, data_test, target_train, target_test = DecisionTree_shili.split_data_Random(data, target, 0.3)# 此处可以更改划分测试集大小

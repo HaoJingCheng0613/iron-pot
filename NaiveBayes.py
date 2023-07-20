@@ -47,7 +47,7 @@ class NaiveBayes(Model):
 
             #评估
             tmp = self.Evaluations(clf, x_test_fold, y_test_fold, ObservationIndex)
-            printer = "K折交叉验证法准确率：" + tmp
+            printer = tmp
             return printer
     
     #random
@@ -72,17 +72,21 @@ class NaiveBayes(Model):
         return clf
 
     #评估模型
+    #评估模型
     def Evaluations(self, model, x_test, y_test, ObservationIndex):
         y_pred = model.predict(x_test)
         if ObservationIndex == "acc":
             AccuracyScore = accuracy_score(y_test,y_pred)
-            printer = "准确率：" +  str(AccuracyScore)
-            
-        elif ObservationIndex == "f1":
+            printer1 = "准确率：" +  str(AccuracyScore)
             F1Score = f1_score(y_test,y_pred, average='micro')
-            printer = "F1分数：" +  str(F1Score)
-
+            printer2 = "F1分数：" +  str(F1Score)
+        printer = printer1 + "\n" + printer2
         return printer
+            
+
+
+
+        
 
     #测试模型
     def test(self, dataname, method, size, ObservationIndex):

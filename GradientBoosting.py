@@ -48,7 +48,7 @@ class GradientBoosting(Model):
 
             #评估
             tmp = self.Evaluations(gbrt, x_test_fold, y_test_fold, ObservationIndex)
-            printer = "K折交叉验证法准确率：" + tmp
+            printer =  str(tmp)
             return printer
     
     #random
@@ -63,7 +63,7 @@ class GradientBoosting(Model):
         
         #评估
         tmp = self.Evaluations(gbrt, x_test, y_test, ObservationIndex)
-        printer = "random" + tmp
+        printer = str(tmp)
         return printer
     
     #训练模型
@@ -79,11 +79,11 @@ class GradientBoosting(Model):
         predictions = [round(value) for value in y_pred]
         if ObservationIndex == "acc":
             AccuracyScore = accuracy_score(y_test,predictions)
-            printer = "准确率：" +  str(AccuracyScore)
+            printer1 = "准确率：" +  str(AccuracyScore)
             
-        elif ObservationIndex == "f1":
             F1Score = f1_score(y_test,predictions, average='micro')
-            printer = "F1分数：" +  str(F1Score)
+            printer2 = "F1分数：" +  str(F1Score)
+            printer=printer1 + "\n" + printer2
 
         return printer
 

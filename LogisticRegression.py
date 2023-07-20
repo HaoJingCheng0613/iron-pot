@@ -77,12 +77,12 @@ class Logistic(Model):
         y_pred = model.predict(x_test)
         if ObservationIndex == "acc":
             AccuracyScore = accuracy_score(y_test,y_pred)
-            printer = "准确率：" +  str(AccuracyScore)
-            
-        elif ObservationIndex == "f1":
+            printer1 = "准确率：" +  str(AccuracyScore)
             F1Score = f1_score(y_test,y_pred, average='micro')
-            printer = "F1分数：" +  str(F1Score)
+            printer2 = "F1分数：" +  str(F1Score)
+            
 
+        printer=printer1 + "\n" + printer2
         return printer
 
     #测试模型

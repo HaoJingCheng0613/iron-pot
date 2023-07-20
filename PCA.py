@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.datasets import load_iris
+from sklearn.datasets import load_wine
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from sklearn.model_selection import train_test_split, cross_val_score, cross_val_predict
 from sklearn.preprocessing import StandardScaler
@@ -74,12 +75,13 @@ class PCAA(Model):
         holdoutmodel = self.train_data(X_train, y_train, n_components)
         y_pred = holdoutmodel.predict(X_test_pca)
         accuracy = accuracy_score(y_test, y_pred)
-        precision = precision_score(y_test, y_pred)
-        recall = recall_score(y_test, y_pred)
-        f1score = f1_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average='micro')  # add average='micro'
+        recall = recall_score(y_test, y_pred, average='micro')  # add average='micro'
+        f1score = f1_score(y_test, y_pred, average='micro')  # add average='micro'
         confusion_matrix_result = confusion_matrix(y_test, y_pred)
 
         return accuracy, precision, recall, f1score, confusion_matrix_result
+
 
     def plt_confusion_matrix(self,confusion_matrix_result):
         plt.figure(figsize=(8, 6))
@@ -92,19 +94,33 @@ class PCAA(Model):
         if method == "random":
             hold_out_accuracy, hold_out_precision, hold_out_recall, hold_out_f1, hold_out_confusion_matrix_result = self.hold_out_validation(
                 dataname, test_size, n_components)
-            print("留出法准确率：", hold_out_accuracy)
-            print("留出法精确度：", hold_out_precision)
-            print("留出法召回率：", hold_out_recall)
-            print("留出法F1分数：", hold_out_f1)
+            # print("留出法准确率：", hold_out_accuracy)
+            # print("留出法精确度：", hold_out_precision)
+            # print("留出法召回率：", hold_out_recall)
+            # print("留出法F1分数：", hold_out_f1)
             self.plt_confusion_matrix(hold_out_confusion_matrix_result)
+            print_content = "留出法准确率：" + str(hold_out_accuracy) + "\n" + "留出法精确度：" + str( hold_out_precision) + "\n" + "留出法召回率：" + str(hold_out_recall) + "\n" + "留出法F1分数：" + str(hold_out_f1)
+            print(print_content)
+            return print_content
 
 
         if method == "kfold":
             k_fold_accuracy, k_fold_precision, k_fold_recall, k_fold_f1, k_fold_confusion_matrix_result = self.k_fold_cross_validation(
                 dataname, test_size,
                 n_components)  # 此处testsize相当于n_splits
-            print("K折交叉验证法准确率：", k_fold_accuracy)
-            print("K折交叉验证法精确度：", k_fold_precision)
-            print("K折交叉验证法召回率：", k_fold_recall)
-            print("K折交叉验证法F1分数：", k_fold_f1)
+            # print("K折交叉验证法准确率：", k_fold_accuracy)
+            # print("K折交叉验证法精确度：", k_fold_precision)
+            # print("K折交叉验证法召回率：", k_fold_recall)
+            # print("K折交叉验证法F1分数：", k_fold_f1)
             self.plt_confusion_matrix(k_fold_confusion_matrix_result)
+            print_content = "K折交叉验证法准确率：" + str(k_fold_accuracy) + "\n" + "K折交叉验证法精确度：" + str(k_fold_precision) + "\n" + "K折交叉验证法召回率：" + str(k_fold_recall) + "\n" + "K折交叉验证法F1分数：" + str(k_fold_f1)
+            print(print_content)
+            return print_content
+
+if __name__=='__main__':
+    # PCA降维算法
+    # 1. 创建一个算法模型对象
+    # 在留出法中testsize指测试集的比例，K折交叉验证法中代指几折，如3折，4折等
+    PCAA_shili = PCAA()
+    # 2.1 调用模型对象的方法 1 ：
+    PCAA_shili.test(test_size=5, dataname="iris", method="random", n_components=2)

@@ -13,11 +13,11 @@ class Linear_Regression(Model):
 
     #导入数据函数
     def load_data(self,name):
-        if name=='iris':
+        if name=="iris":
             dataset = load_iris() 
             return dataset
            
-        if name=='wine':
+        if name=="wine":
             dataset = load_wine()
             return dataset
         
@@ -39,8 +39,8 @@ class Linear_Regression(Model):
         from sklearn import metrics
         MSE = metrics.mean_squared_error(y_test, y_pred)
         RMSE = np.sqrt(metrics.mean_squared_error(y_test, y_pred))
-        print('MSE:', MSE)
-        print('RMSE:', RMSE)
+        # print('MSE:', MSE)
+        # print('RMSE:', RMSE)
 
         import matplotlib.pyplot as plt
         import matplotlib as mpl
@@ -54,4 +54,6 @@ class Linear_Regression(Model):
         plt.plot(range(len(y_test)), y_pred, 'b', label='预测数据')
         plt.legend()
         plt.show()
- 
+
+        print_content="MSE:"+str(MSE)+"\n"+"RMSE:"+str(RMSE)
+        return print_content

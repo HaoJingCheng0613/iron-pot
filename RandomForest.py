@@ -33,7 +33,7 @@ class Random_Forest(Model):
         dataset = Random_Forest.load_data(self,dataset_name)
         feature = pd.DataFrame(data=dataset.data, columns=dataset.feature_names)
         target = pd.DataFrame(data=map(lambda item: dataset.target_names[item],
-                                       dataset.target), columns={'target_names'})
+                                       dataset.target), columns=['target_names'])
         # iris_split_data = pd.concat([feature, target], axis=1)
         # print(iris_split_datas)
         feature_train, feature_test, target_train, target_test = \
@@ -120,6 +120,12 @@ class Random_Forest(Model):
           if i == j:
               right += 1
            #print(i + '\t' + j)
-        print('准确率Accuracy为' + str(right / len(res) * 100) + "%")
+        print_content='准确率Accuracy为' + str(right / len(res) * 100) + "%"
+        print(print_content)
+        return print_content
 
-
+if __name__=='__main__':
+    #1.创建一个算法模型对象
+    RandomForest_test=Random_Forest()
+    #3.1.1调用wine数据集 采取random分割方法 60%为训练集
+    RandomForest_test.test(dataset_name='wine',size=0.6)

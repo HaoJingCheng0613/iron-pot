@@ -4,6 +4,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_curve, auc
 import numpy as np
 from sklearn.datasets import load_iris
+from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from model import Model
@@ -90,15 +91,21 @@ class K_nearest_neighbors(Model):
         if method == "random":
             hold_out_accuracy, hold_out_precision, hold_out_recall, hold_out_f1 = self.hold_out_validation(dataname,
                                                                                                                test_size)
-            print("留出法准确率：", hold_out_accuracy)
-            print("留出法精确率（Precision）：", hold_out_precision)
-            print("留出法召回率（Recall）：", hold_out_recall)
-            print("留出法F1值（F1-Score）：", hold_out_f1)
+            # print("留出法准确率：", hold_out_accuracy)
+            # print("留出法精确率（Precision）：", hold_out_precision)
+            # print("留出法召回率（Recall）：", hold_out_recall)
+            # print("留出法F1值（F1-Score）：", hold_out_f1)
+            print_content = "留出法准确率：" + str(hold_out_accuracy) + "\n" + "留出法精确率（Precision）：" + str( hold_out_precision) + "\n" + "留出法召回率（Recall）：" + str(hold_out_recall) + "\n" + "留出法F1值（F1-Score）：" + str(hold_out_f1)
+            #print (print_content)
+            return print_content
 
         if method == "kfold":
             k_fold_accuracy,k_fold_precision, k_fold_recall, k_fold_f1 = self.k_fold_cross_validation(dataname,
                                                                                                       test_size)  # 此处testsize相当于n_splits
-            print("K折交叉验证法准确率：", k_fold_accuracy)
-            print("K折交叉验证法精确率（Precision）：", k_fold_precision)
-            print("K折交叉验证法召回率（Recall）：", k_fold_recall)
-            print("K折交叉验证法F1值（F1-Score）：", k_fold_f1)
+            # print("K折交叉验证法准确率：", k_fold_accuracy)
+            # print("K折交叉验证法精确率（Precision）：", k_fold_precision)
+            # print("K折交叉验证法召回率（Recall）：", k_fold_recall)
+            # print("K折交叉验证法F1值（F1-Score）：", k_fold_f1)
+            print_content = "K折交叉验证法准确率：" + str(k_fold_accuracy) + "\n" + "K折交叉验证法精确率（Precision）：" + str(k_fold_precision) + "\n" + "K折交叉验证法召回率（Recall）：" + str(k_fold_recall) + "\n" + "K折交叉验证法F1值（F1-Score）：" + str(k_fold_f1)
+            #print (print_content)
+            return print_content

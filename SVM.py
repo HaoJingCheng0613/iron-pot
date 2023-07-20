@@ -210,14 +210,14 @@ class SVM(Model):
         svInd = np.nonzero(alphas.A > 0)[0]
         sVs = datMat[svInd]
         labelSV = labelMat[svInd];
-        print("支持向量个数:%d" % np.shape(sVs)[0])
+        #print("支持向量个数:%d" % np.shape(sVs)[0])
         m, n = np.shape(datMat)
         errorCount = 0
         for i in range(m):
             kernelEval = kernelTrans(sVs, datMat[i, :], kTup)
             predict = kernelEval.T * np.multiply(labelSV, alphas[svInd]) + b
             if np.sign(predict) != np.sign(target_train[i]): errorCount += 1
-        print("训练集错误率: %.2f%%" % (float(errorCount) / m))
+        #print("训练集错误率: %.2f%%" % (float(errorCount) / m))
 
 
 
@@ -229,4 +229,7 @@ class SVM(Model):
             kernelEval = kernelTrans(sVs, datMat[i, :], kTup)
             predict = kernelEval.T * np.multiply(labelSV, alphas[svInd]) + b
             if np.sign(predict) != np.sign(target_test[i]): errorCount += 1
-        print("测试集错误率: %.2f%%" % (float(errorCount) / m))
+        #print("测试集错误率: %.2f%%" % (float(errorCount) / m))
+
+        print_content="支持向量个数:%d\n训练集错误率: %.2f%%\n测试集错误率: %.2f%%" % (np.shape(sVs)[0],float(errorCount) / m,float(errorCount) / m)
+        return print_content

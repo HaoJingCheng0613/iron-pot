@@ -69,7 +69,9 @@ class KMeansClustering(Model):
     # 轮廓系数
     def silhouetteCoefficient(self, X, labels):
         silhouette_avg = silhouette_score(X, labels)
-        print("轮廓系数: {:.2f}".format(silhouette_avg))
+        # print("轮廓系数: {:.2f}".format(silhouette_avg))
+        print_content = "轮廓系数: {:.2f}".format(silhouette_avg)
+        return print_content
 
     # WCSS评价指标
     def compute_wcss(self, X, labels, centroids):
@@ -78,7 +80,9 @@ class KMeansClustering(Model):
             cluster_points = X[labels == i]
             distance = np.linalg.norm(cluster_points - centroids[i])
             wcss += distance ** 2
-        print("WCSS: {:.2f}".format(wcss))
+        # print("WCSS: {:.2f}".format(wcss))
+        print_content = "WCSS: {:.2f}".format(wcss)
+        return print_content
 
     # DBI指数评价指标
     def dbi(self, X, labels, centroids):
@@ -93,7 +97,9 @@ class KMeansClustering(Model):
                     inter_cluster_distances.append(inter_cluster_distance)
             dbi += (intra_cluster_distance / max(inter_cluster_distances))
         dbi /= self.n_clusters
-        print("DBI指数: {:.2f}".format(dbi))
+        # print("DBI指数: {:.2f}".format(dbi))
+        print_content = "DBI指数: {:.2f}".format(dbi)
+        return print_content
 
     def calculate_intra_cluster_distance(self, cluster_points, centroid):
         distance = np.linalg.norm(cluster_points - centroid, axis=1)
@@ -106,7 +112,9 @@ class KMeansClustering(Model):
     # Calinski-Harabasz指数评价指标
     def ch_scores(self, X, labels, centroids):
         ch_score = self.calculate_ch_score(X, labels, centroids)
-        print("Calinski-Harabasz指数评价指标: {:.2f}".format(ch_score))
+        # print("Calinski-Harabasz指数评价指标: {:.2f}".format(ch_score))
+        print_content = "Calinski-Harabasz指数评价指标: {:.2f}".format(ch_score)
+        return print_content
 
     def calculate_ch_score(self, X, labels, centroids):
         n = len(X)
@@ -156,11 +164,15 @@ class KMeansClustering(Model):
         self.train_data(X_scaled, y)
         labels = self.labels
         centroids = self.centroids
-        self.silhouetteCoefficient(X_scaled, labels)
-        self.compute_wcss(X_scaled, labels, centroids)
-        self.dbi(X_scaled, labels, centroids)
-        self.ch_scores(X_scaled, labels, centroids)
+        # self.silhouetteCoefficient(X_scaled, labels)
+        # self.compute_wcss(X_scaled, labels, centroids)
+        # self.dbi(X_scaled, labels, centroids)
+        # self.ch_scores(X_scaled, labels, centroids)
+        print_content = self.silhouetteCoefficient(X_scaled, labels) + "\n" + self.compute_wcss(X_scaled, labels, centroids) + "\n" + self.dbi(X_scaled, labels, centroids) + "\n" + self.ch_scores(X_scaled, labels, centroids)
+        print(print_content)
+        
 
         # 可视化聚类结果
         self.plot_clusters(X_scaled[:, :2], labels, centroids, featurenames[0], featurenames[1])
         
+        return print_content

@@ -58,3 +58,6 @@ class DecisionTree(Model):
         acc = sum(y_test_pre == target_test) / num_test
         print('the accuracy is', acc)  # 显示预测准确率
 
+        print_content = "the predict values are" + str(y_test_pre) + "\n" + "the accuracy is" + str(acc)
+        return print_content
+
