@@ -42,20 +42,20 @@ if __name__ == '__main__':
     #随机森林算法
 
     #1.创建一个算法模型对象
-    RandomDessert_test=Random_Dessert()
+    RandomForest_test=Random_Forest()
     #3.1.1调用wine数据集 采取random分割方法 60%为训练集
-    RandomDessert_test.train_data(dataset_name='wine',size=0.6)
+    RandomForest_test.test(dataset_name='wine',size=0.6)
     #3.1.2调用wine数据集 采取random分割方法 70%为训练集
-    RandomDessert_test.train_data(dataset_name='wine',size=0.7)
+    RandomForest_test.test(dataset_name='wine',size=0.7)
     #3.1.3调用wine数据集 采取random分割方法 80%为训练集 
-    RandomDessert_test.train_data(dataset_name='wine',size=0.8)  
+    RandomForest_test.test(dataset_name='wine',size=0.8)  
 
-    #3.2.1调用iris数据集 采取random分割方法 60%为训练集
-    RandomDessert_test.train_data(dataset_name='iris',size=0.6)
-    #3.1.2调用wine数据集 采取random分割方法 70%为训练集
-    RandomDessert_test.train_data(dataset_name='iris',size=0.7)
-    #3.1.3调用wine数据集 采取random分割方法 80%为训练集 
-    RandomDessert_test.train_data(dataset_name='iris',size=0.8) 
+    #3.1.1调用iris数据集 采取random分割方法 60%为训练集
+    RandomForest_test.test(dataset_name='iris',size=0.6)
+    #3.1.2调用iris数据集 采取random分割方法 70%为训练集
+    RandomForest_test.test(dataset_name='iris',size=0.7)
+    #3.1.3调用iris数据集 采取random分割方法 80%为训练集 
+    RandomForest_test.test(dataset_name='iris',size=0.8) 
 
 
     #线性回归算法
