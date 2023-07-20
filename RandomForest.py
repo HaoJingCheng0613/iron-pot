@@ -122,5 +122,4 @@ class Random_Forest(Model):
            #print(i + '\t' + j)
         print('准确率Accuracy为' + str(right / len(res) * 100) + "%")
 
-n=Random_Forest()
-n.test('iris',0.7)
+
